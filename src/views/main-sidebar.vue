@@ -10,12 +10,22 @@
           <icon-svg name="shouye" class="site-sidebar__menu-icon"></icon-svg>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="demo-01" @click="$router.push({ name: 'demo-01' })">
-          <icon-svg name="mudedi" class="site-sidebar__menu-icon"></icon-svg>
-          <span slot="title">demo-01</span>
-        </el-menu-item>
+        <el-submenu index="demo">
+          <template slot="title">
+            <icon-svg name="shoucang" class="site-sidebar__menu-icon"></icon-svg>
+            <span>demo</span>
+          </template>
+          <el-menu-item index="demo-echarts" @click="$router.push({ name: 'demo-echarts' })">
+            <icon-svg name="tubiao" class="site-sidebar__menu-icon"></icon-svg>
+            <span slot="title">echarts</span>
+          </el-menu-item>
+          <el-menu-item index="demo-ueditor" @click="$router.push({ name: 'demo-ueditor' })">
+            <icon-svg name="editor" class="site-sidebar__menu-icon"></icon-svg>
+            <span slot="title">ueditor</span>
+          </el-menu-item>
+        </el-submenu>
         <sub-menu
-          v-for="menu in menuList" 
+          v-for="menu in menuList"
           :key="menu.menuId"
           :menu="menu"
           :dynamicMenuRoutes="dynamicMenuRoutes">
@@ -87,7 +97,9 @@
               name: route.name,
               title: route.meta.title,
               type: isURL(route.meta.iframeUrl) ? 'iframe' : 'module',
-              iframeUrl: route.meta.iframeUrl || ''
+              iframeUrl: route.meta.iframeUrl || '',
+              params: route.params,
+              query: route.query
             }
             this.mainTabs = this.mainTabs.concat(tab)
           }

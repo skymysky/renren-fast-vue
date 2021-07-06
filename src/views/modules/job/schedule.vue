@@ -40,12 +40,6 @@
         label="bean名称">
       </el-table-column>
       <el-table-column
-        prop="methodName"
-        header-align="center"
-        align="center"
-        label="方法名称">
-      </el-table-column>
-      <el-table-column
         prop="params"
         header-align="center"
         align="center"
@@ -203,7 +197,7 @@
               this.$message.error(data.msg)
             }
           })
-        })
+        }).catch(() => {})
       },
       // 暂停
       pauseHandle (id) {
@@ -233,7 +227,7 @@
               this.$message.error(data.msg)
             }
           })
-        })
+        }).catch(() => {})
       },
       // 恢复
       resumeHandle (id) {
@@ -263,7 +257,7 @@
               this.$message.error(data.msg)
             }
           })
-        })
+        }).catch(() => {})
       },
       // 立即执行
       runHandle (id) {
@@ -293,7 +287,7 @@
               this.$message.error(data.msg)
             }
           })
-        })
+        }).catch(() => {})
       },
       // 日志列表
       logHandle () {
